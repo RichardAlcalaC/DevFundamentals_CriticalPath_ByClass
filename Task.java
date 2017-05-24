@@ -71,13 +71,13 @@ public class Task
         int time = getTimeToComplete();
         Vector preTasks=getPreRequisites();
         if (preTasks != null) {
-	    int maxTimePre = 0;
-	    for(int i=0; i<preTasks.size(); i++){
-	        int taskTime = ((Task) preTasks.elementAt(i)).getTimeToComplete();
-		    if( taskTime > maxTimePre)
-                maxTimePre = taskTime;
-            }
-	    time = time + maxTimePre;
+           int maxTimePre = 0;
+	       for(int i=0; i<preTasks.size(); i++){
+	           int taskTime = ((Task) preTasks.elementAt(i)).getTimeToComplete();
+		       if(taskTime > maxTimePre)
+		           maxTimePre = taskTime;
+           }
+	       time = time + maxTimePre;
         }
         return time;
     }
