@@ -74,4 +74,23 @@ public class ProjectTest
         assertEquals(8, project.calculateTimeToDelivery());
     }
     
+    //Task with 2 dependents
+    @Test
+    public void calculateTimeToDeliveryOfOneTasksWith2DependentTasks() {
+        Project project = new Project("sample");
+        
+        Task t1 = new Task("t1", 5);
+        Task t2 = new Task("t2", 3);
+        Task t3 = new Task("t2", 2);
+                
+        t3.dependsOn(t1);
+        t3.dependsOn(t2);
+        
+        project.addTask(t1);
+        project.addTask(t2);
+        project.addTask(t3);
+                
+        assertEquals(7, project.calculateTimeToDelivery());
+    }
+    
 }

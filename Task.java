@@ -1,3 +1,4 @@
+import java.util.Vector;
 
 /**
  * Write a description of class Task here.
@@ -12,7 +13,8 @@ public class Task
     private int timeToComplete;
     private String owner;
     
-    private Task preRequisite;
+    //private Task preRequisite;
+    private Vector <Task> preRequisiteTasks; 
     
     public Task() {
         description = "";
@@ -23,6 +25,7 @@ public class Task
     public Task(String name, int timeToComplete) {
         this.name = name;
         this.timeToComplete = timeToComplete;
+        preRequisiteTasks = new Vector <Task> ();
     }
     
     public void setDescription(String description) {
@@ -54,17 +57,27 @@ public class Task
     }
     
     public void dependsOn(Task otherTask) {
-        preRequisite = otherTask;
+        //preRequisite = otherTask;
+        preRequisiteTasks.add(otherTask);
     }
     
-    public Task getPreRequisite() {
-        return preRequisite;
+    public Vector getPreRequisites() {
+        //return preRequisite;
+        return preRequisiteTasks;
     }
     
-    public int calculateTimeToComplete() {
+    //Task with 2 dependents
+   public int calculateTimeToComplete() {
         int time = getTimeToComplete();
-        if (getPreRequisite() != null) {
-            time = time + getPreRequisite().getTimeToComplete();
+        Vector preTasks=getPreRequisites();
+        if (preTasks != null) {
+	    int maxTimePre = 0;
+	    for(int i=0; i<preTasks.size(); i++){
+	        int taskTime = ((Task) preTasks.elementAt(i)).getTimeToComplete();
+		    if( taskTime > maxTimePre)
+                maxTimePre = taskTime;
+            }
+	    time = time + maxTimePre;
         }
         return time;
     }
