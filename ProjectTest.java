@@ -93,4 +93,90 @@ public class ProjectTest
         assertEquals(7, project.calculateTimeToDelivery());
     }
     
+    //Task For A Diamond Shaped
+    @Test
+    public void calculateTimeForADiamondShapedDependency() {
+        Project project = new Project("sample");
+        
+        Task t1 = new Task("t1", 5);
+        Task t2 = new Task("t2", 2);
+        Task t3 = new Task("t3", 6);
+        Task t4 = new Task("t4", 1);
+                
+        t2.dependsOn(t1);
+        t3.dependsOn(t1);
+        t4.dependsOn(t2);
+        t4.dependsOn(t3);
+        
+        project.addTask(t1);
+        project.addTask(t2);
+        project.addTask(t3);
+        project.addTask(t4);
+                
+        assertEquals(12, project.calculateTimeToDelivery());
+    }
+    
+    //Test For Project With Odd Path
+    @Test
+    public void calculateTimeForProjectWithOddPath() {
+        Project project = new Project("ForProjectWithOddPath");
+        
+        Task t0 = new Task("t1", 10);
+        Task t1 = new Task("t1", 5);
+        Task t2 = new Task("t2", 2);
+        Task t3 = new Task("t3", 6);
+        Task t4 = new Task("t4", 1);
+        
+        //Task t5 = new Task("t5", 99);
+        
+        t1.dependsOn(t0);
+        t2.dependsOn(t1);
+        t3.dependsOn(t1);
+        t4.dependsOn(t2);
+        t4.dependsOn(t3);
+        
+        project.addTask(t0);
+        project.addTask(t1);
+        project.addTask(t2);
+        project.addTask(t3);
+        project.addTask(t4);
+        
+        project.addTask(new Task("t5", 21));
+        
+        assertEquals(22, project.calculateTimeToDelivery());
+    }
+    
+    //US3
+    @Test
+    public void modifyTaskTimeToComplete()
+    {
+        Project project = new Project("ForProjectWithOddPath");
+        
+        Task t0 = new Task("t1", 10);
+        Task t1 = new Task("t1", 5);
+        Task t2 = new Task("t2", 2);
+        Task t3 = new Task("t3", 6);
+        Task t4 = new Task("t4", 1);
+        
+        //Task t5 = new Task("t5", 99);
+        
+        t1.dependsOn(t0);
+        t2.dependsOn(t1);
+        t3.dependsOn(t1);
+        t4.dependsOn(t2);
+        t4.dependsOn(t3);
+        
+        project.addTask(t0);
+        project.addTask(t1);
+        project.addTask(t2);
+        project.addTask(t3);
+        project.addTask(t4);
+        
+        assertEquals(22, project.calculateTimeToDelivery());
+        
+        t2.setTimeToComplete(3);
+        
+        //assertEquals(23, project.calculateTimeToDelivery());
+        
+    }
 }

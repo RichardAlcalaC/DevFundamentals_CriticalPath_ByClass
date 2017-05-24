@@ -13,13 +13,13 @@ public class Task
     private int timeToComplete;
     private String owner;
     
-    //private Task preRequisite;
     private Vector <Task> preRequisiteTasks; 
     
     public Task() {
         description = "";
         owner = "";
         name = "";
+        preRequisiteTasks = new Vector <Task> ();
     }
     
     public Task(String name, int timeToComplete) {
@@ -57,16 +57,15 @@ public class Task
     }
     
     public void dependsOn(Task otherTask) {
-        //preRequisite = otherTask;
         preRequisiteTasks.add(otherTask);
     }
     
     public Vector getPreRequisites() {
-        //return preRequisite;
         return preRequisiteTasks;
     }
     
     //Task with 2 dependents...
+   /*
    public int calculateTimeToComplete() {
         int time = getTimeToComplete();
         Vector preTasks=getPreRequisites();
@@ -80,5 +79,17 @@ public class Task
 	        time = time + maxTimePre;
         }
         return time;
+    }
+    */
+    
+   //Task with 2 dependents...
+    public int calculateTimeToComplete() {
+        int maxPreRequisiteTime = 0;
+	    for(Task preReq: preRequisiteTasks){
+	        if(preReq.calculateTimeToComplete() > maxPreRequisiteTime){
+		        maxPreRequisiteTime = preReq.calculateTimeToComplete();
+            }
+        }
+        return getTimeToComplete() + maxPreRequisiteTime;
     }
 }
