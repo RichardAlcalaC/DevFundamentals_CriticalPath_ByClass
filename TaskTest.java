@@ -66,4 +66,29 @@ public class TaskTest
         assertEquals("t1", task.getName());
         assertEquals(4, task.getTimeToComplete());
     }
+    
+    @Test
+    public void tasksAreEqualIfTheyHaveTheSame() {
+        Task task = new Task ("t1", 5);
+        Task expected = new Task ("t1", 5);
+        assertTrue(task.equals(expected));
+    }
+    
+    @Test
+    public void tasksAreDiffIfTheyHaveDiffName() {
+        Task task = new Task ("t1", 5);
+        Task expected = new Task ("t2", 5);
+        assertFalse(task.equals(expected));
+    }
+    
+    @Test
+    public void tasksAreDiffIfTheyHaveADiffTimeToComplete() {
+        Task task = new Task ("t1", 5);
+        Task expected = new Task ("t1", 6);
+        assertFalse(task.equals(expected));
+    }
 }
+
+
+
+

@@ -179,4 +179,19 @@ public class ProjectTest
         //assertEquals(23, project.calculateTimeToDelivery());
         
     }
+    
+    @Test
+    public void projectCannotHaveDuplicateTasks()
+    {
+        Project project = new Project("sample");
+        
+        Task t1 = new Task("t1", 5);
+        
+        project.addTask(t1);
+        project.addTask(t1);
+        
+        assertEquals(1, project.countTasks());
+        
+    }
+    
 }

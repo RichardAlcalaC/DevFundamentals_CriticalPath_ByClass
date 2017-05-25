@@ -25,7 +25,8 @@ public class Project
     }
     
     public void addTask(Task task) {
-        tasks.add(task);
+        if(!tasks.contains(task))
+            tasks.add(task);
     }
     
     public int calculateTimeToDelivery() {
@@ -37,5 +38,9 @@ public class Project
             }
         }
         return maxTimeToComplete;
+    }
+    
+    public int countTasks() {
+        return tasks.size();
     }
 }
