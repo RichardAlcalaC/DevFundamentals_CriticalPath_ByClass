@@ -5,6 +5,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * The test class ProjectTest.
  *
@@ -13,6 +15,8 @@ import org.junit.Test;
  */
 public class ProjectTest
 {
+    private Project
+    
     //US0
     @Test
     public void createAnEmptyProject() {
@@ -194,4 +198,60 @@ public class ProjectTest
         
     }
     
+    //
+    @Test
+    public void calculateProjectCriticalPath_LongCase() //15
+    {
+        Project project = new Project("sample");
+        
+        Task t1 = new Task("t1", 1);
+        Task t2 = new Task("t2", 5);
+        Task t3 = new Task("t3", 3);
+        Task t4 = new Task("t4", 2);
+        Task t5 = new Task("t5", 3);
+        Task t6 = new Task("t6", 4);
+        Task t7 = new Task("t7", 3); 
+        
+        t2.dependsOn(t1);
+        t3.dependsOn(t1);
+        
+        t4.dependsOn(t2);
+        
+        t5.dependsOn(t3);
+        
+        t6.dependsOn(t4);
+        t6.dependsOn(t5);
+        
+        t7.dependsOn(t6);
+        
+        project.addTask(t1);
+        project.addTask(t2);
+        project.addTask(t3);
+        project.addTask(t4);
+        project.addTask(t5);
+        project.addTask(t6);
+        project.addTask(t7);
+        
+        assertEquals(15, project.calculateTimeToDelivery());
+        
+        //List <Task> criticalPath = project.calculateCrticicalPath();
+        //assertEquals(5, criticalPath());
+        
+    }
+    
+    @Test
+    public void criticalPathOfAProjectWithASingleTask() //15
+    {
+        Project project = new Project("sample");
+        project.add(Task);
+        
+        List Task t1 = new Task("t1", 5);
+        project.addTask(t1);
+        
+        assertEquals(15, project.calculateTimeToDelivery());
+        
+        List <Task> criticalPath = project.calculateCriticalPath();
+        //assertEquals(new Task("t1", 5)), criticalPath());
+        
+    }
 }
