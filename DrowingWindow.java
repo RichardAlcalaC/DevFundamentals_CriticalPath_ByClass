@@ -9,7 +9,9 @@ public class DrowingWindow extends JFrame
     {
         super(title);
         panel = new DrowingPanel();
+        panel.setSize(50,100);
         
+        //getContentPane().setLayout(null);
         getContentPane().add(panel);
         
     }
@@ -17,6 +19,8 @@ public class DrowingWindow extends JFrame
     public static void main (String args [])
     {
         DrowingWindow window = new DrowingWindow("Drowing Samle");
+        window.setSize(520,300);
+        
         
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);

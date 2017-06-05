@@ -58,6 +58,11 @@ UI guides
 5. Show
 
 
+JComponent
+No permiten elementos internos
+
+Contenedor
+Necesitan un layout para distribuir los elementos que contengan (I.e. JPanel)
 
 
 
