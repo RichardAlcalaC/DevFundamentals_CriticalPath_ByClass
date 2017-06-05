@@ -47,6 +47,26 @@ completed, given a set of tasks
 US 6. As a user I should see a list of tasks that belong to
 the Critical Path
 
+*************************************************************
+UI guides
+---------
+
+1. Declare components 
+2. Init Components
+3. Set Layout
+4. Add event listener
+5. Show
+
+
+
+
+
+
+
+
+
+
+
 
 
 
