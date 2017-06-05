@@ -38,7 +38,8 @@ US 3. As a user I should be able to edit the information of
 a given task
 
 US 4. As a user I should be able to set dependencies 
-between tasks to indicate a task cannot start until another is finished
+between tasks to indicate a task cannot start until another is
+finished
 
 US 5. As a user I should get the date when a project can be
 completed, given a set of tasks

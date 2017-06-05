@@ -68,27 +68,38 @@ public class TaskTest
     }
     
     @Test
-    public void tasksAreEqualIfTheyHaveTheSame() {
-        Task task = new Task ("t1", 5);
-        Task expected = new Task ("t1", 5);
+    public void tasksAreEqualIfTheyHaveTheSameNameAndTimeToComplete() {
+        Task task = new Task("t1", 5);
+        Task expected = new Task("t1", 5);
+
         assertTrue(task.equals(expected));
     }
     
     @Test
-    public void tasksAreDiffIfTheyHaveDiffName() {
-        Task task = new Task ("t1", 5);
-        Task expected = new Task ("t2", 5);
-        assertFalse(task.equals(expected));
+    public void tasksAreDifferentIfTheyHaveADifferentName() {
+        Task task = new Task("t1", 5);
+        Task other = new Task("t2", 5);
+
+        assertFalse(task.equals(other));
     }
     
     @Test
-    public void tasksAreDiffIfTheyHaveADiffTimeToComplete() {
-        Task task = new Task ("t1", 5);
-        Task expected = new Task ("t1", 6);
-        assertFalse(task.equals(expected));
+    public void tasksAreDifferentIfTheyHaveADifferentTimeToComplete() {
+        Task task = new Task("t1", 5);
+        Task other = new Task("t1", 6);
+
+        assertFalse(task.equals(other));
     }
+    
+    @Test
+    public void addSubTaskToTask(){
+        Task task = new Task ("t1", 5);
+        SubTask subT = new SubTask("sub1", 5);
+        
+        task.addSubTask(subT);     
+        
+        
+        
+    }
+    
 }
-
-
-
-

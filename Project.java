@@ -1,8 +1,7 @@
-import java.util.Vector;
 import java.util.Set;
 import java.util.List;
+import java.util.Vector;
 import java.util.HashSet;
-
 
 /**
  * Write a description of class Project here.
@@ -29,8 +28,9 @@ public class Project
     }
     
     public void addTask(Task task) {
-        //if(!tasks.contains(task))
+        //if (!tasks.contains(task)) {
             tasks.add(task);
+        //}
     }
     
     public int calculateTimeToDelivery() {
@@ -48,19 +48,9 @@ public class Project
         return tasks.size();
     }
     
-    
-    public List<Task> calculateCriticalPath()
-    {
-        List <Task> path = new Vector<Task>();
-        int maxTimeToComplete = 0;
-        /*
-        for (Task task: tasks) {
-            int time = task.calculateTimeToComplete();
-            if (time > maxTimeToComplete) {
-                maxTimeToComplete = time;
-            }
-        }*/
+    public List<Task> calculateCriticalPath() {
+        List<Task> path = new Vector<Task>();
+        
         return path;
     }
-    
 }
